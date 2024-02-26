@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nome Dipendente</th>
+            <th>Cognome Dipendente</th>
+            <th>Indirizzo</th>
+            <th>Codice Fiscale</th>
+            <th>Coniugato</th>
+            <th>Figli a carico</th>
+            <th>Mansione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Azienda_Edile.Models.Employee emp in Model)
+        {
+            <tr>
+                <td>@emp.Nome</td>
+                <td>@emp.Cognome</td>
+                <td>@emp.Indirizzo</td>
+                <td>@emp.CodiceFiscale</td>
+                <td>@emp.Coniugato</td>
+                <td>@emp.NumeroFigliACarico</td>
+                <td>@emp.Mansione</td>
+            </tr>
+        }
+    </tbody>
+</table>
