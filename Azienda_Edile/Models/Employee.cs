@@ -4,6 +4,7 @@ namespace Azienda_Edile.Models
 {
     public class Employee
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cognome { get; set; }
         public string Indirizzo { get; set; }
@@ -17,8 +18,9 @@ namespace Azienda_Edile.Models
         public Employee()
         {
         }
-        public Employee(string nome, string cognome, string indirizzo, string codiceFiscale, bool coniugato, int numeroFigliACarico, string mansione)
+        public Employee(int id, string nome, string cognome, string indirizzo, string codiceFiscale, bool coniugato, int numeroFigliACarico, string mansione)
         {
+            Id = id;
             Nome = nome;
             Cognome = cognome;
             Indirizzo = indirizzo;

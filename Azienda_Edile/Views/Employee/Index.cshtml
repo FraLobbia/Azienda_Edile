@@ -3,8 +3,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<table>
+<h1 class="my-4">Elenco dipendenti Azienda Muratori S.P.A</h1>
+<table class="table table-bordered table-info table-striped">
     <thead>
         <tr>
             <th>Nome Dipendente</th>
@@ -17,8 +17,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Azienda_Edile.Models.Employee emp in Model)
-        {
+
+
+
+            @foreach (Azienda_Edile.Models.Employee emp in Model)
+            {
             <tr>
                 <td>@emp.Nome</td>
                 <td>@emp.Cognome</td>
@@ -29,5 +32,6 @@
                 <td>@emp.Mansione</td>
             </tr>
         }
-    </tbody>
+         
+        </tbody>
 </table>

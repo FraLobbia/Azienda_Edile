@@ -6,8 +6,7 @@
 
 // 2. Include any default variable overrides here
 
-$danger: #782f2f;
-
+$body-bg: #85c8c8;
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../node_modules/bootstrap/scss/variables";
@@ -28,7 +27,7 @@ $danger: #782f2f;
 @import "../node_modules/bootstrap/scss/images";
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
-/*@import "../node_modules/bootstrap/scss/tables";*/
+@import "../node_modules/bootstrap/scss/tables";
 /*@import "../node_modules/bootstrap/scss/forms";*/
 @import "../node_modules/bootstrap/scss/buttons";
 /*@import "../node_modules/bootstrap/scss/transitions";*/

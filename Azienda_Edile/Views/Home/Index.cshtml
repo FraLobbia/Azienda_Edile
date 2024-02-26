@@ -3,31 +3,26 @@
 }
 
 <main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+    <section class="row mt-2" aria-labelledby="aspnetTitle">
+        <h1 id="title">Azienda Muratori S.P.A</h1>
+        <p class="lead">
+            Muratori Professionisti offre servizi completi di costruzione e ristrutturazione per progetti residenziali e commerciali,
+            garantendo qualità, professionalità e puntualità.
+        </p>
+        <div class="d-flex justify-content-start gap-5">
+            <div class="d-flex justify-content-center gap-3 flex-column mx-5">
+                <a href="~/Employee">
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
+                    <button class="btn btn-info shadow p-2">I nostri dipendenti</button>
+                </a>
+                <a href="~/Employee/create">
+                    <button class="btn btn-outline-danger shadow p-2" onclick="">Firma il contratto e lavora con noi!</button>
+                </a>
+            </div>
+            <img src="https://www.immobiliare.it/news/app/uploads/2022/09/Cantiere.jpeg"
+                 alt="Immagine cantiere"
+                 class="shadow"
+                 style="max-height:300px;object-fit:contain" />
+        </div>
+    </section>
 </main>

@@ -35,6 +35,7 @@ namespace Azienda_Edile.Controllers
                 {
                     // Creo un oggetto di tipo Employee
                     Employee employee = new Employee(
+                        Convert.ToInt32(reader["Id"]),
                         reader["Nome"].ToString(),
                         reader["Cognome"].ToString(),
                         reader["Indirizzo"].ToString(),
@@ -68,7 +69,7 @@ namespace Azienda_Edile.Controllers
         }
 
 
-        public ActionResult Create() // da lasciare ???? 
+        public ActionResult Create()
         {
             return View();
         }
