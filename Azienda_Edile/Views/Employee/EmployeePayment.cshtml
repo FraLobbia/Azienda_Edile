@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Azienda_Edile.Models.Pagamento>
+
+@{
+    ViewBag.Title = "EmployeePayment";
+}
+
+<h2>EmployeePayment</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_Pagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_Employee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PeriodoPagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmmontarePagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPagamento)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_Pagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_Employee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodoPagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmmontarePagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoPagamento)
+        </td>
+      
+    </tr>
+}
+
+</table>

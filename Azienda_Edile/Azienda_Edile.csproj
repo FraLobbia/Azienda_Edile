@@ -126,6 +126,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Pagamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -612,6 +613,8 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Style\Style.scss" />
     <Content Include="Style\_BootstrapOverrides.scss" />
+    <Content Include="Views\Employee\PayEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

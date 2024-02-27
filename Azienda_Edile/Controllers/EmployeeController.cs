@@ -35,7 +35,7 @@ namespace Azienda_Edile.Controllers
                 {
                     // Creo un oggetto di tipo Employee
                     Employee employee = new Employee(
-                        Convert.ToInt32(reader["Id"]),
+                        Convert.ToInt32(reader["id_Employee"]),
                         reader["Nome"].ToString(),
                         reader["Cognome"].ToString(),
                         reader["Indirizzo"].ToString(),
@@ -116,6 +116,107 @@ namespace Azienda_Edile.Controllers
                 conn.Close(); // Chiudo la connessione al db, NECESSARIO
             }
             return View();
+        }
+
+        public ActionResult PayEmployee()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PayEmployee(Pagamento pagamento)
+        {
+            // Recupero i dati dalla query string
+            int id_Employee = Convert.ToInt32(Request.QueryString["id_Employee"]);
+
+            // Ottengo i dati dal modello che ricevo in input
+            DateTime PeriodoPagamento = pagamento.PeriodoPagamento;
+            decimal AmmontarePagamento = pagamento.AmmontarePagamento;
+            string TipoPagamento = pagamento.TipoPagamento;
+
+            // Connessione al db tramite la stringa di connessione presente nel file Web.config     
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringDB"].ConnectionString.ToString();
+
+            // Creo la connessione al db tramite la stringa di connessione 
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                // Apro la connessione al db
+                conn.Open();
+
+                // Creo il comando sql da eseguire
+                SqlCommand cmd = new SqlCommand("INSERT INTO Pagamenti (PeriodoPagamento, AmmontarePagamento, TipoPagamento, id_Employee) VALUES (@PeriodoPagamento, @AmmontarePagamento, @TipoPagamento, @id_Employee)", conn);
+
+                // Aggiungo i parametri al comando sql
+                cmd.Parameters.AddWithValue("@PeriodoPagamento", PeriodoPagamento);
+                cmd.Parameters.AddWithValue("@AmmontarePagamento", AmmontarePagamento);
+                cmd.Parameters.AddWithValue("@TipoPagamento", TipoPagamento);
+                cmd.Parameters.AddWithValue("@id_Employee", id_Employee);
+
+                // Eseguo il comando sql
+                cmd.ExecuteNonQuery();
+            }
+            // Gestione dell'eccezione
+            catch (Exception ex) // ex è l'oggetto che rappresenta l'eccezione
+            {
+                Response.Write("Errore");
+                Response.Write(ex.Message);
+            }
+            return View();
+        }
+
+        public ActionResult EmployeePayment()
+        {
+            // Recupero i dati dalla query string
+            int id_Employee = Convert.ToInt32(Request.QueryString["id_Employee"]);
+
+            // Connessione al db tramite la stringa di connessione presente nel file Web.config     
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringDB"].ConnectionString.ToString();
+
+            // Creo la connessione al db tramite la stringa di connessione 
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Pagamenti WHERE id_Employee = @id_Employee", conn);
+            cmd.Parameters.AddWithValue("@id_Employee", id_Employee);
+
+            List<Pagamento> pagamentiList = new List<Pagamento>();
+
+            try
+            {
+                // Apro la connessione al db
+                conn.Open();
+
+                // Eseguo il comando sql
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                // Leggo i dati dal db
+                while (reader.Read())
+                {
+                    // Creo un oggetto di tipo Pagamento
+                    Pagamento pagamento = new Pagamento(
+                         Convert.ToDateTime(reader["PeriodoPagamento"]),
+                          Convert.ToDecimal(reader["AmmontarePagamento"]),
+                                            reader["TipoPagamento"].ToString(),
+                            Convert.ToInt32(reader["id_Employee"])
+                                                                                                                                       );
+
+                    // Aggiungo l'oggetto alla lista che poi verrà passata alla view
+                    pagamentiList.Add(pagamento);
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Errore");
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                conn.Close(); // Chiudo la connessione al db, NECESSARIO
+            }
+
+
+            return View(pagamentiList);
         }
     }
 }

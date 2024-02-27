@@ -6,7 +6,7 @@
 <h1 class="my-4">Elenco dipendenti Azienda Muratori S.P.A</h1>
 <table class="table table-bordered table-info table-striped">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>Nome Dipendente</th>
             <th>Cognome Dipendente</th>
             <th>Indirizzo</th>
@@ -14,6 +14,7 @@
             <th>Coniugato</th>
             <th>Figli a carico</th>
             <th>Mansione</th>
+            <th>Pagamenti</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +23,7 @@
 
             @foreach (Azienda_Edile.Models.Employee emp in Model)
             {
-            <tr>
+            <tr class="text-center">
                 <td>@emp.Nome</td>
                 <td>@emp.Cognome</td>
                 <td>@emp.Indirizzo</td>
@@ -30,6 +31,10 @@
                 <td>@emp.Coniugato</td>
                 <td>@emp.NumeroFigliACarico</td>
                 <td>@emp.Mansione</td>
+                <td>
+                 <a class="btn btn-info" href="~/Employee/PayEmployee?id_Employee=@emp.id_Employee">Paga</a>
+                 <a class="btn btn-outline-info text-black ms-2" href="~/Employee/EmployeePayment?id_Employee=@emp.id_Employee">Vedi Storico</a>
+                </td>
             </tr>
         }
          
