@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Azienda_Edile.Models.Pagamento>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "EmployeePayment";
 }
 
-<h2>Index</h2>
+<h2>Storico dei pagamenti dipendente</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.TipoPagamento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id_Pagamento }) |
-            @Html.ActionLink("Details", "Details", new {  id = item.id_Pagamento}) |
-            @Html.ActionLink("Delete", "Delete", new {  id = item.id_Pagamento  })
+            @Html.ActionLink("Edit", "Edit",  new { id = item.id_Pagamento }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id_Pagamento }) |
+            @Html.ActionLink("Delete", "Delete",  new { id = item.id_Pagamento })
         </td>
     </tr>
 }

@@ -1,42 +1,77 @@
-﻿
+﻿@model IEnumerable<Azienda_Edile.Models.Employee>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h1 class="my-4">Elenco dipendenti Azienda Muratori S.P.A</h1>
+
+<p>
+    @Html.ActionLink("Create New", "CreateEmployee")
+</p>
 <table class="table table-bordered table-info table-striped">
-    <thead>
-        <tr class="text-center">
-            <th>Nome Dipendente</th>
-            <th>Cognome Dipendente</th>
-            <th>Indirizzo</th>
-            <th>Codice Fiscale</th>
-            <th>Coniugato</th>
-            <th>Figli a carico</th>
-            <th>Mansione</th>
-            <th>Pagamenti</th>
-        </tr>
-    </thead>
-    <tbody>
+    <tr class="text-center">
+        <th>
+            @Html.DisplayNameFor(model => model.id_Employee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodiceFiscale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coniugato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroFigliACarico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mansione)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_Employee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indirizzo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodiceFiscale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coniugato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroFigliACarico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mansione)
+        </td>
+        <td>
+            @Html.ActionLink("Paga", "Create", "Payments", new { id = item.id_Employee }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Vedi Storico", "EmployeePaymentHistory", "Employee", new { id = item.id_Employee }, new { @class = "btn btn-outline-info text-black" })
+            @Html.ActionLink("Edit", "Edit", new { id = item.id_Employee }, new { @class = "" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.id_Employee }, new { @class = "" }) 
+            @Html.ActionLink("Delete", "Delete", new {  id=item.id_Employee  }, new { @class = "" })
+        </td>
+    </tr>
+}
 
-
-            @foreach (Azienda_Edile.Models.Employee emp in Model)
-            {
-            <tr class="text-center">
-                <td>@emp.Nome</td>
-                <td>@emp.Cognome</td>
-                <td>@emp.Indirizzo</td>
-                <td>@emp.CodiceFiscale</td>
-                <td>@emp.Coniugato</td>
-                <td>@emp.NumeroFigliACarico</td>
-                <td>@emp.Mansione</td>
-                <td>
-                 <a class="btn btn-info" href="~/Employee/PayEmployee?id_Employee=@emp.id_Employee">Paga</a>
-                 <a class="btn btn-outline-info text-black ms-2" href="~/Employee/EmployeePayment?id_Employee=@emp.id_Employee">Vedi Storico</a>
-                </td>
-            </tr>
-        }
-         
-        </tbody>
 </table>
