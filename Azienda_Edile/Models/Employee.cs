@@ -73,5 +73,43 @@ namespace Azienda_Edile.Models
             }
             return employeesList;
         }
+
+        public static Employee GetEmployeeByID(int id)
+        {
+            Employee employee = new Employee();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionStringDB"].ConnectionString.ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Employee WHERE id_Employee = " + id, conn);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    employee = new Employee(
+                Convert.ToInt32(reader["id_Employee"]),
+                                reader["Nome"].ToString(),
+                                reader["Cognome"].ToString(),
+                                reader["Indirizzo"].ToString(),
+                                reader["CodiceFiscale"].ToString(),
+              Convert.ToBoolean(reader["Coniugato"]),
+                Convert.ToInt32(reader["NumeroFigliACarico"]),
+                                reader["Mansione"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return employee;
+        }
     }
 }

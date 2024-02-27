@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -609,12 +610,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Style\Style.scss" />
     <Content Include="Style\_BootstrapOverrides.scss" />
-    <Content Include="Views\Employee\PayEmployee.cshtml" />
-    <Content Include="Views\Employee\EmployeePayment.cshtml" />
+    <Content Include="Views\Payments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
